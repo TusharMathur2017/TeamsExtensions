@@ -1,10 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hello World</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teams Message Extension</title>
+
+  <!-- Teams SDK -->
+  <script src="https://statics.teams.cdn.office.net/sdk/v1.13.0/js/MicrosoftTeams.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+      background-color: #f3f2f1;
+    }
+
+    h1 {
+      color: #6264a7;
+    }
+
+    button {
+      background-color: #6264a7;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello, world!</h1>
+  <h1>Teams Message Extension UI</h1>
+  <p>This is a placeholder page for your Teams message extension task module or configuration panel.</p>
+
+  <button onclick="submitResult()">Send Message to Teams</button>
+
+  <script>
+    // Initialize the Teams SDK
+    microsoftTeams.app.initialize().then(() => {
+      console.log("Teams SDK initialized");
+    });
+
+    function submitResult() {
+      const result = {
+        type: "result",
+        data: {
+          message: "This message came from the GitHub Pages frontend!"
+        }
+      };
+
+      microsoftTeams.dialog.submit(result);
+    }
+  </script>
 </body>
 </html>
